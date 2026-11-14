@@ -1,0 +1,25 @@
+# Live traffic service: selector color is patched by overlays/active
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo
+spec:
+  selector: {app: demo, color: blue}
+  ports: [{port: 80, targetPort: 80}]
+---
+# Direct access to each color (for testing before switching)
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-blue
+spec:
+  selector: {app: demo, color: blue}
+  ports: [{port: 80, targetPort: 80}]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-green
+spec:
+  selector: {app: demo, color: green}
+  ports: [{port: 80, targetPort: 80}]

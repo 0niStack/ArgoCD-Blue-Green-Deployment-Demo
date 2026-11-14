@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bluegreen-demo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/YOUR_USER/argocd-blue-green.git   # <-- change
+    targetRevision: main
+    path: 02-app/overlays/active
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bluegreen
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -1,0 +1,9 @@
+# The only file that changes on a switch: set color to blue or green
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo
+spec:
+  selector:
+    app: demo
+    color: blue
