@@ -6,4 +6,4 @@ metadata:
 spec:
   selector:
     app: demo
-    color: green
+    color: blue
